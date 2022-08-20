@@ -1,0 +1,70 @@
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/classes.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/**
+ * Define default css variables for piano classes.
+ */
+:root {
+  --colsun--hide-for-members: inherit;
+  --colsun--show-for-members: none;
+  --colsun--hide-for-anonymous: none;
+  --colsun--show-for-anonymous: inherit;
+  --colsun--hide-for-basic-members: inherit;
+  --colsun--show-for-basic-members: none;
+  --colsun--hide-for-basic-plus-members: inherit;
+  --colsun--show-for-basic-plus-members: none;
+  --colsun--hide-for-premium-members: inherit;
+  --colsun--show-for-premium-members: none;
+  --colsun--hide-for-champion-members: inherit;
+  --colsun--show-for-champion-members: none;
+}
+
+.colsun-hide-for-anonymous {
+  display: var(--colsun--hide-for-anonymous) !important;
+}
+
+.colsun-show-for-anonymous {
+  display: var(--colsun--show-for-anonymous) !important;
+}
+
+.colsun-hide-for-members {
+  display: var(--colsun--hide-for-members) !important;
+}
+
+.colsun-show-for-members {
+  display: var(--colsun--show-for-members) !important;
+}
+
+.colsun-hide-for-basic-members {
+  display: var(--colsun--hide-for-basic-members) !important;
+}
+
+.colsun-show-for-basic-members {
+  display: var(--colsun--show-for-basic-members) !important;
+}
+
+.colsun-hide-for-basic-plus-members {
+  display: var(--colsun--hide-for-basic-plus-members) !important;
+}
+
+.colsun-show-for-basic-plus-members {
+  display: var(--colsun--show-for-basic-plus-members) !important;
+}
+
+.colsun-hide-for-premium-members {
+  display: var(--colsun--hide-for-premium-members) !important;
+}
+
+.colsun-show-for-premium-members {
+  display: var(--colsun--show-for-premium-members) !important;
+}
+
+.colsun-hide-for-champion-members {
+  display: var(--colsun--hide-for-champion-members) !important;
+}
+
+.colsun-show-for-champion-members {
+  display: var(--colsun--show-for-champion-members) !important;
+}
+
+/*# sourceMappingURL=index.css.map*/

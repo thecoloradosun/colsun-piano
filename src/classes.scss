@@ -1,0 +1,52 @@
+/**
+ * Define default css variables for piano classes.
+ */
+:root {
+	// Is member.
+	--colsun--hide-for-members: inherit;
+	--colsun--show-for-members: none;
+
+	// Anonymous.
+	--colsun--hide-for-anonymous: none;
+	--colsun--show-for-anonymous: inherit;
+
+	// Basic.
+	--colsun--hide-for-basic-members: inherit;
+	--colsun--show-for-basic-members: none;
+
+	// Basic plus.
+	--colsun--hide-for-basic-plus-members: inherit;
+	--colsun--show-for-basic-plus-members: none;
+
+	// Premium.
+	--colsun--hide-for-premium-members: inherit;
+	--colsun--show-for-premium-members: none;
+
+	// Champion.
+	--colsun--hide-for-champion-members: inherit;
+	--colsun--show-for-champion-members: none;
+}
+
+// Anonymous.
+.colsun-hide-for-anonymous { display: var( --colsun--hide-for-anonymous ) ! important; }
+.colsun-show-for-anonymous { display: var( --colsun--show-for-anonymous ) ! important; }
+
+// Member.
+.colsun-hide-for-members { display: var( --colsun--hide-for-members ) ! important; }
+.colsun-show-for-members { display: var( --colsun--show-for-members ) ! important; }
+
+// Basic.
+.colsun-hide-for-basic-members { display: var( --colsun--hide-for-basic-members ) ! important; }
+.colsun-show-for-basic-members { display: var( --colsun--show-for-basic-members ) ! important; }
+
+// Basic plus.
+.colsun-hide-for-basic-plus-members { display: var( --colsun--hide-for-basic-plus-members ) ! important; }
+.colsun-show-for-basic-plus-members { display: var( --colsun--show-for-basic-plus-members ) ! important; }
+
+// Premium.
+.colsun-hide-for-premium-members { display: var( --colsun--hide-for-premium-members ) ! important; }
+.colsun-show-for-premium-members { display: var( --colsun--show-for-premium-members ) ! important; }
+
+// Champion.
+.colsun-hide-for-champion-members { display: var( --colsun--hide-for-champion-members ) ! important; }
+.colsun-show-for-champion-members { display: var( --colsun--show-for-champion-members ) ! important; }

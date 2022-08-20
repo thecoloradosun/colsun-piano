@@ -15,20 +15,27 @@ define( 'COLSUN_PIANO_PATH', dirname( __FILE__ ) );
 define( 'COLSUN_PIANO_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Enqueue our built assets directly to the block editor.
+ * Enqueue assets.
  */
 function enqueue_piano_customizations() {
-    wp_enqueue_script(
-        'colsun-piano',
-        COLSUN_PIANO_URL . 'build/index.js',
-        [ // Required dependencies for blocks.
-            // 'wp-blocks',
-            // 'wp-element',
-            // 'wp-i18n',
-            // 'wp-compose',
-            // 'wp-block-editor',
-        ],
-        filemtime( COLSUN_PIANO_PATH . 'build/index.js' )
-    );
+	// Styles.
+	wp_enqueue_style(
+		'colsun-piano-styles',
+		COLSUN_PIANO_URL . 'build/index.css',
+		[],
+		filemtime( COLSUN_PIANO_PATH . 'build/index.css' )
+	);
+
+	// Script.
+	wp_enqueue_script(
+		'colsun-piano-script',
+		COLSUN_PIANO_URL . 'build/index.js',
+		[],
+		filemtime( COLSUN_PIANO_PATH . 'build/index.js' )
+	);
+
+
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_piano_customizations' );
+
+
