@@ -33,9 +33,5 @@ function enqueue_piano_customizations() {
 		[],
 		filemtime( COLSUN_PIANO_PATH . 'build/index.js' )
 	);
-
-
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_piano_customizations' );
-
-

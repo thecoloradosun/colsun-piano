@@ -25,6 +25,13 @@
 	// Champion.
 	--colsun--hide-for-champion-members: inherit;
 	--colsun--show-for-champion-members: none;
+
+	// UI.
+	--colsun--become-a-member-display: block;
+	--colsun--login-link-display: inherit;
+
+	--colsun--my-account-link-display: none;
+	--colsun--logout-link-display: none;
 }
 
 // Anonymous.
@@ -50,3 +57,10 @@
 // Champion.
 .colsun-hide-for-champion-members { display: var( --colsun--hide-for-champion-members ) ! important; }
 .colsun-show-for-champion-members { display: var( --colsun--show-for-champion-members ) ! important; }
+
+// UI.
+.colsun-become-a-member { display: var( --colsun--become-a-member-display ) ! important; }
+.colsun-login-link { display: var( --colsun--login-link-display ) ! important; }
+
+.colsun-my-account { display: var( --colsun--my-account-link-display ) ! important; }
+.colsun-logout-link { display: var( --colsun--logout-link-display ) ! important; }

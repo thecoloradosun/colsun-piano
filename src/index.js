@@ -42,9 +42,41 @@ const initClassTokens = () => {
 };
 
 /**
+ * Attach a logout and refresh listener to all .wp_piano_logout_button classes.
+ */
+const registerLogoutButtons = () => {
+	const logoutButtons = document.getElementsByClassName( 'wp_piano_logout_button' );
+	Array.from( logoutButtons ).forEach( ( logoutButton ) => {
+		logoutButton.addEventListener( 'click', ( event ) => {
+			event.preventDefault();
+			tp.pianoId.logout();
+			location.reload();
+		} );
+	} );
+}
+
+/**
+ * Refresh the page on user login.
+ *
+ * This allows us to ignore dynamic UI changes.
+ */
+const loginCallback = () => {
+	location.reload();
+};
+
+/**
  * Self invoking function.
  */
 ( function() {
+	// Ensure we're ready to work with Piano.
 	window.tp = window.tp || [];
+
+	// Setup our special resource classes.
 	window.tp.push( [ 'init', initClassTokens ] );
+
+	// Setup logout buttons.
+	window.tp.push( [ 'init', registerLogoutButtons ] );
+
+	// Watch for user login.
+	tp.push(['addHandler', 'loginSuccess', loginCallback ]);
 } )();

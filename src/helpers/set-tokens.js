@@ -84,10 +84,20 @@ const setTokens = ( key, show ) => {
 
 const setMembersTokens = ( show ) => {
 	setTokens( 'members', show );
+
+	// Display the Become a Member button for non-members.
+	setBecomeAMemberToken( ! show );
 };
 
 const setAnonymousTokens = ( show ) => {
 	setTokens( 'anonymous', show );
+
+	// Not authenticated.
+	setLoginLinkToken( show );
+
+	// Is authenticated.
+	setMyAccountToken( ! show );
+	setLogoutLinkToken( ! show );
 };
 
 const setBasicTokens = ( show ) => {
@@ -105,5 +115,21 @@ const setPremiumTokens = ( show ) => {
 const setChampionTokens = ( show ) => {
 	setTokens( 'champion-members', show );
 };
+
+const setBecomeAMemberToken = ( show ) => {
+	root.style.setProperty( '--colsun--become-a-member-display', show ? 'block' : 'none' );
+}
+
+const setLoginLinkToken = ( show ) => {
+	root.style.setProperty( '--colsun--login-link-display', show ? 'inherit' : 'none' );
+}
+
+const setMyAccountToken = ( show ) => {
+	root.style.setProperty( '--colsun--my-account-link-display', show ? 'inherit' : 'none' );
+}
+
+const setLogoutLinkToken = ( show ) => {
+	root.style.setProperty( '--colsun--logout-link-display', show ? 'inherit' : 'none' );
+}
 
 export default setTokensByResourceId;
