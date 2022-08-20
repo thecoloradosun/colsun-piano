@@ -8,13 +8,13 @@ Customizations to Piano for The Colorado Sun.
 Use the `testing-blocks.html` file to test class functionality.
 
 The `rid` query param can be used to test functionality,
-https://coloradosun.newspackstaging.com/piano-classes/
-https://coloradosun.newspackstaging.com/piano-classes/?rid=
-https://coloradosun.newspackstaging.com/piano-classes/?rid=FreeTier
-https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasic
-https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasicPlus
-https://coloradosun.newspackstaging.com/piano-classes/?rid=TierPremium
-https://coloradosun.newspackstaging.com/piano-classes/?rid=TierChampion
+* [No rid](https://coloradosun.newspackstaging.com/piano-classes/)
+* [Blank rid](https://coloradosun.newspackstaging.com/piano-classes/?rid=)
+* [FreeTier](https://coloradosun.newspackstaging.com/piano-classes/?rid=FreeTier)
+* [TierBasic](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasic)
+* [TierBasicPlus](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasicPlus)
+* [TierPremium](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierPremium)
+* [TierChampion](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierChampion)
 
 ## Installation ##
 
