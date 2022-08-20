@@ -1,16 +1,12 @@
 <?php
 /**
- * Plugin Name:       Colsun Piano
- * Description:       Example static block scaffolded with Create Block tool.
- * Requires at least: 5.9
- * Requires PHP:      7.0
- * Version:           0.1.0
- * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       colsun-piano
+ * Plugin Name: Colsun Piano
+ * Description: Customizations to Piano for The Colorado Sun.
+ * Version:     1.0.0
+ * Author:      thecoloradosun, jameswalterburke
+ * Text Domain: colsun-piano
  *
- * @package           create-block
+ * @package     colsun-piano
  */
 
 /**
@@ -23,4 +19,4 @@
 function create_block_colsun_piano_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
-add_action( 'init', 'create_block_colsun_piano_block_init' );
+// add_action( 'init', 'create_block_colsun_piano_block_init' );
