@@ -23,7 +23,7 @@ const setTokensByResourceId = ( resourceId ) => {
 		/**
 		 * Logged in.
 		 */
-		case 'FreeTier':
+		case 'TierFree':
 			setMembersTokens( false );
 			setAnonymousTokens( false );
 			break;
