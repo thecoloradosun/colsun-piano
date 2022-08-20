@@ -9,14 +9,26 @@
  * @package     colsun-piano
  */
 
+namespace Colorado_Sun;
+
+define( 'COLSUN_PIANO_PATH', dirname( __FILE__ ) );
+define( 'COLSUN_PIANO_URL', plugin_dir_url( __FILE__ ) );
+
 /**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ * Enqueue our built assets directly to the block editor.
  */
-function create_block_colsun_piano_block_init() {
-	register_block_type( __DIR__ . '/build' );
+function enqueue_piano_customizations() {
+    wp_enqueue_script(
+        'colsun-piano',
+        COLSUN_PIANO_URL . 'build/index.js',
+        [ // Required dependencies for blocks.
+            // 'wp-blocks',
+            // 'wp-element',
+            // 'wp-i18n',
+            // 'wp-compose',
+            // 'wp-block-editor',
+        ],
+        filemtime( COLSUN_PIANO_PATH . 'build/index.js' )
+    );
 }
-// add_action( 'init', 'create_block_colsun_piano_block_init' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_piano_customizations' );
