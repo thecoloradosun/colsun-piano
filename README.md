@@ -10,7 +10,7 @@ Use the `testing-blocks.html` file to test class functionality.
 The `rid` query param can be used to test functionality,
 * [No rid](https://coloradosun.newspackstaging.com/piano-classes/)
 * [Blank rid](https://coloradosun.newspackstaging.com/piano-classes/?rid=)
-* [TierFree](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierFree)
+* [FreeTier](https://coloradosun.newspackstaging.com/piano-classes/?rid=FreeTier)
 * [TierBasic](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasic)
 * [TierBasicPlus](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasicPlus)
 * [TierPremium](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierPremium)

@@ -79,4 +79,30 @@ const loginCallback = () => {
 
 	// Watch for user login.
 	tp.push(['addHandler', 'loginSuccess', loginCallback ]);
+
+	// Attempt to fire a password reset modal.
+	tp.push( [
+		'init',
+		function() {
+			// Only works for anonymous users.
+			if ( ! tp.user.isUserValid() ) {
+
+				// Check for token.
+				const tokenMatch = location.search.match( /reset_token=([A-Za-z0-9]+)/ );
+
+				// Match token.
+				if ( tokenMatch ) {
+					const token = tokenMatch[1]; // Get value of the token.
+
+					// Present password reset form with the found token
+					tp.pianoId.show({
+						'resetPasswordToken': token,
+						loggedIn: function () {
+							location.reload();
+						},
+					});
+				}
+			}
+		}
+	] );
 } )();
