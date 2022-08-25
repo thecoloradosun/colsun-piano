@@ -23,7 +23,7 @@ function enqueue_piano_customizations() {
 		'colsun-piano-styles',
 		COLSUN_PIANO_URL . 'build/index.css',
 		[],
-		filemtime( COLSUN_PIANO_PATH . 'build/index.css' )
+		filemtime( COLSUN_PIANO_PATH . '/build/index.css' )
 	);
 
 	// Script.
@@ -31,7 +31,7 @@ function enqueue_piano_customizations() {
 		'colsun-piano-script',
 		COLSUN_PIANO_URL . 'build/index.js',
 		[],
-		filemtime( COLSUN_PIANO_PATH . 'build/index.js' )
+		filemtime( COLSUN_PIANO_PATH . '/build/index.js' )
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_piano_customizations' );
