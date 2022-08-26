@@ -78,7 +78,7 @@ const loginCallback = () => {
 	window.tp.push( [ 'init', registerLogoutButtons ] );
 
 	// Watch for user login.
-	tp.push(['addHandler', 'loginSuccess', loginCallback ]);
+	// tp.push(['addHandler', 'loginSuccess', loginCallback ]); // Temp comment out to test something.
 
 	// Attempt to fire a password reset modal.
 	tp.push( [

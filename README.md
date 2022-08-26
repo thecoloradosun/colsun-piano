@@ -3,7 +3,6 @@
 
 Customizations to Piano for The Colorado Sun.
 
-
 ## Testing ##
 Use the `testing-blocks.html` file to test class functionality.
 
