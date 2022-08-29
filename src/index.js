@@ -61,7 +61,15 @@ const registerLogoutButtons = () => {
  * This allows us to ignore dynamic UI changes.
  */
 const loginCallback = () => {
-	location.reload();
+	// Get information about the user's access to resources.
+	window.tp.api.callApi( '/access/list', {}, function( response ) {
+
+		// Get the `rid` from our query arg (for testing), or our logged in RID.
+		const resourceId = getQueryParam( 'rid', response?.data?.[0]?.resource?.rid ?? '' );
+
+		// Set our tokens accordingly.
+		setTokensByResourceId( resourceId );
+	} );
 };
 
 /**
@@ -78,7 +86,7 @@ const loginCallback = () => {
 	window.tp.push( [ 'init', registerLogoutButtons ] );
 
 	// Watch for user login.
-	// tp.push(['addHandler', 'loginSuccess', loginCallback ]); // Temp comment out to test something.
+	tp.push(['addHandler', 'loginSuccess', loginCallback ]); // Temp comment out to test something.
 
 	// Attempt to fire a password reset modal.
 	tp.push( [
