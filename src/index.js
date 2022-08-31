@@ -73,6 +73,34 @@ const loginCallback = () => {
 };
 
 /**
+ * Refresh the page when a user saves their newsletter preferences on the
+ * `/account/` route.
+ *
+ * Ideally we wouldn't need this, but there's some hacky stuff going on.
+ *
+ * When in doubt, consult with Eric.
+ */
+const reloadPageWhenNewslettersAreUpdated = ( { data } ) => {
+	/**
+	 * Parse the event.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/message_event
+	 */
+	const {
+		event,
+		sender,
+	} = JSON.parse( data );
+
+	if (
+		'formSend' === event // Event should be 'formSend', indicating a POST was made.
+		&& sender.startsWith( 'piano-id-form' ) // ID of the form that made the request.
+		&& window.location.pathname.startsWith( '/account/' ) // Starting path of our settings page.
+	) {
+		location.reload();
+	}
+};
+
+/**
  * Self invoking function.
  */
 ( function() {
@@ -113,4 +141,7 @@ const loginCallback = () => {
 			}
 		}
 	] );
+
+	// Refresh the page when newsletter settings are updated.
+	window.addEventListener( 'message', reloadPageWhenNewslettersAreUpdated );
 } )();
