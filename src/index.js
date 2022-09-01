@@ -39,7 +39,7 @@ const initPianoClasses = () => {
 		const loggedIn = getQueryParam( 'mockPianoLoggedIn', window.tp.user.isUserValid() ?? false );
 
 		// Set our tokens accordingly.
-		setTokens( loggedIn === 'true', resourceId );
+		setTokens( loggedIn === 'true' || loggedIn === true, resourceId );
 	} );
 };
 
