@@ -8,24 +8,32 @@ const root = document.querySelector( ':root' );
  *
  * @param {string} resourceId Resource ID from Piano.
  */
-const setTokensByResourceId = ( resourceId ) => {
+const setTokens = ( loggedIn, resourceId ) => {
+
+	// Login tokens.
+	setLoggedOutTokens( ! loggedIn );
+	setLoggedInTokens( loggedIn );
+
+	// Hide `Logout` when already logged out.
+	setLogoutLinkToken( loggedIn );
+
+	// Hide `Login` when already logged in.
+	setLoginLinkToken( ! loggedIn );
+
+	// Show `My Account` when logged in.
+	setMyAccountToken( loggedIn );
+
+	// Resource tokens.
 	switch ( resourceId ) {
-
-		/**
-		 * Anonymous, not logged in.
-		 */
 		default:
-		case '':
+			// Not a member.
 			setMembersTokens( false );
-			setAnonymousTokens( true );
-			break;
 
-		/**
-		 * Logged in.
-		 */
-		case 'TierFree':
-			setMembersTokens( false );
-			setAnonymousTokens( false );
+			// Reset all resource tokens.
+			setBasicTokens( false );
+			setBasicPlusTokens( false );
+			setPremiumTokens( false );
+			setChampionTokens( false );
 			break;
 
 		/**
@@ -34,7 +42,6 @@ const setTokensByResourceId = ( resourceId ) => {
 		case 'TierBasic':
 			setBasicTokens( true );
 			setMembersTokens( true );
-			setAnonymousTokens( false );
 			break;
 
 		/**
@@ -43,7 +50,6 @@ const setTokensByResourceId = ( resourceId ) => {
 		case 'TierBasicPlus':
 			setBasicPlusTokens( true );
 			setMembersTokens( true );
-			setAnonymousTokens( false );
 			break;
 
 		/**
@@ -52,7 +58,6 @@ const setTokensByResourceId = ( resourceId ) => {
 		case 'TierPremium':
 			setPremiumTokens( true );
 			setMembersTokens( true );
-			setAnonymousTokens( false );
 			break;
 
 		/**
@@ -61,7 +66,6 @@ const setTokensByResourceId = ( resourceId ) => {
 		case 'TierChampion':
 			setChampionTokens( true );
 			setMembersTokens( true );
-			setAnonymousTokens( false );
 			break;
 	}
 }
@@ -72,7 +76,7 @@ const setTokensByResourceId = ( resourceId ) => {
  * @param {string} key  Tier key.
  * @param {bool}   show Toggle class state.
  */
-const setTokens = ( key, show ) => {
+const setTokensForKey = ( key, show ) => {
 	if ( show ) {
 		root.style.setProperty( `--colsun--show-for-${ key }`, 'inherit' );
 		root.style.setProperty( `--colsun--hide-for-${ key }`, 'none' );
@@ -82,38 +86,35 @@ const setTokens = ( key, show ) => {
 	}
 }
 
-const setMembersTokens = ( show ) => {
-	setTokens( 'members', show );
+const setLoggedOutTokens = ( show ) => {
+	setTokensForKey( 'logged-out', show );
+};
 
-	// Display the Become a Member button for non-members.
+const setLoggedInTokens = ( show ) => {
+	setTokensForKey( 'logged-in', show );
+};
+
+const setMembersTokens = ( show ) => {
+	setTokensForKey( 'members', show );
+
+	// Hide `Become a member` when already a member.
 	setBecomeAMemberToken( ! show );
 };
 
-const setAnonymousTokens = ( show ) => {
-	setTokens( 'anonymous', show );
-
-	// Not authenticated.
-	setLoginLinkToken( show );
-
-	// Is authenticated.
-	setMyAccountToken( ! show );
-	setLogoutLinkToken( ! show );
-};
-
 const setBasicTokens = ( show ) => {
-	setTokens( 'basic-members', show );
+	setTokensForKey( 'basic-members', show );
 };
 
 const setBasicPlusTokens = ( show ) => {
-	setTokens( 'basic-plus-members', show );
+	setTokensForKey( 'basic-plus-members', show );
 };
 
 const setPremiumTokens = ( show ) => {
-	setTokens( 'premium-members', show );
+	setTokensForKey( 'premium-members', show );
 };
 
 const setChampionTokens = ( show ) => {
-	setTokens( 'champion-members', show );
+	setTokensForKey( 'champion-members', show );
 };
 
 const setBecomeAMemberToken = ( show ) => {
@@ -132,4 +133,4 @@ const setLogoutLinkToken = ( show ) => {
 	root.style.setProperty( '--colsun--logout-link-display', show ? 'inherit' : 'none' );
 }
 
-export default setTokensByResourceId;
+export default setTokens;

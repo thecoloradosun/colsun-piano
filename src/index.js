@@ -1,4 +1,4 @@
-import setTokensByResourceId from './helpers/set-tokens';
+import setTokens from './helpers/set-tokens';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -25,19 +25,21 @@ const getQueryParam = ( key, defaultValue = null ) => {
 }
 
 /**
- * When the page loads, determine our resourceId, and initalize our class
- * tokens.
+ * Update the piano classes.
  */
-const initClassTokens = () => {
+const initPianoClasses = () => {
 
 	// Get information about the user's access to resources.
 	window.tp.api.callApi( '/access/list', {}, function( response ) {
 
-		// Get the `rid` from our query arg (for testing), or our logged in RID.
-		const resourceId = getQueryParam( 'rid', response?.data?.[0]?.resource?.rid ?? '' );
+		// Get the `mockPianoRid` from our query arg (for testing), or our logged in RID.
+		const resourceId = getQueryParam( 'mockPianoRid', response?.data?.[0]?.resource?.rid ?? '' );
+
+		// Get the `mockPianoLoggedIn` query arg (for testing), or check Piano's state.
+		const loggedIn = getQueryParam( 'mockPianoLoggedIn', window.tp.user.isUserValid() ?? false );
 
 		// Set our tokens accordingly.
-		setTokensByResourceId( resourceId );
+		setTokens( loggedIn === 'true', resourceId );
 	} );
 };
 
@@ -56,21 +58,29 @@ const registerLogoutButtons = () => {
 }
 
 /**
- * Refresh the page on user login.
- *
- * This allows us to ignore dynamic UI changes.
+ * Attempt to display a resetPasswordToken modal.
  */
-const loginCallback = () => {
-	// Get information about the user's access to resources.
-	window.tp.api.callApi( '/access/list', {}, function( response ) {
+const triggerPasswordReset = () => {
 
-		// Get the `rid` from our query arg (for testing), or our logged in RID.
-		const resourceId = getQueryParam( 'rid', response?.data?.[0]?.resource?.rid ?? '' );
+	// Cannot reset password if logged in.
+	if ( tp.user.isUserValid() ) {
+		return;
+	}
 
-		// Set our tokens accordingly.
-		setTokensByResourceId( resourceId );
-	} );
-};
+	// Do we have a reset token?
+	const tokenMatch = location.search.match( /reset_token=([A-Za-z0-9]+)/ );
+	if ( ! tokenMatch ) {
+		return;
+	}
+
+	// Present password reset form with the found token
+	tp.pianoId.show({
+		'resetPasswordToken': tokenMatch[1], // Get value of the token.
+		loggedIn: function () {
+			location.reload();
+		},
+	});
+}
 
 /**
  * Refresh the page when a user saves their newsletter preferences on the
@@ -104,43 +114,19 @@ const reloadPageWhenNewslettersAreUpdated = ( { data } ) => {
  * Self invoking function.
  */
 ( function() {
+
 	// Ensure we're ready to work with Piano.
 	window.tp = window.tp || [];
 
 	// Setup our special resource classes.
-	window.tp.push( [ 'init', initClassTokens ] );
+	window.tp.push( [ 'init', initPianoClasses ] );
+	window.tp.push( ['addHandler', 'loginSuccess', initPianoClasses ] );
 
 	// Setup logout buttons.
 	window.tp.push( [ 'init', registerLogoutButtons ] );
 
-	// Watch for user login.
-	tp.push(['addHandler', 'loginSuccess', loginCallback ]); // Temp comment out to test something.
-
 	// Attempt to fire a password reset modal.
-	tp.push( [
-		'init',
-		function() {
-			// Only works for anonymous users.
-			if ( ! tp.user.isUserValid() ) {
-
-				// Check for token.
-				const tokenMatch = location.search.match( /reset_token=([A-Za-z0-9]+)/ );
-
-				// Match token.
-				if ( tokenMatch ) {
-					const token = tokenMatch[1]; // Get value of the token.
-
-					// Present password reset form with the found token
-					tp.pianoId.show({
-						'resetPasswordToken': token,
-						loggedIn: function () {
-							location.reload();
-						},
-					});
-				}
-			}
-		}
-	] );
+	tp.push( [ 'init', triggerPasswordReset ] );
 
 	// Refresh the page when newsletter settings are updated.
 	window.addEventListener( 'message', reloadPageWhenNewslettersAreUpdated );

@@ -2,27 +2,31 @@
  * Define default css variables for piano classes.
  */
 :root {
-	// Is member.
+	// Logged out.
+	--colsun--hide-for-logged-out: none;
+	--colsun--show-for-logged-out: inherit;
+
+	// Logged in.
+	--colsun--hide-for-logged-in: none;
+	--colsun--show-for-logged-in: inherit;
+
+	// Has a resource.
 	--colsun--hide-for-members: inherit;
 	--colsun--show-for-members: none;
 
-	// Anonymous.
-	--colsun--hide-for-anonymous: none;
-	--colsun--show-for-anonymous: inherit;
-
-	// Basic.
+	// Basic resrouce.
 	--colsun--hide-for-basic-members: inherit;
 	--colsun--show-for-basic-members: none;
 
-	// Basic plus.
+	// Basic plus resrouce.
 	--colsun--hide-for-basic-plus-members: inherit;
 	--colsun--show-for-basic-plus-members: none;
 
-	// Premium.
+	// Premium resrouce.
 	--colsun--hide-for-premium-members: inherit;
 	--colsun--show-for-premium-members: none;
 
-	// Champion.
+	// Champion resrouce.
 	--colsun--hide-for-champion-members: inherit;
 	--colsun--show-for-champion-members: none;
 
@@ -34,9 +38,13 @@
 	--colsun--logout-link-display: none;
 }
 
-// Anonymous.
-.colsun-hide-for-anonymous { display: var( --colsun--hide-for-anonymous ) ! important; }
-.colsun-show-for-anonymous { display: var( --colsun--show-for-anonymous ) ! important; }
+// Logged out.
+.colsun-hide-for-logged-out { display: var( --colsun--hide-for-logged-out ) ! important; }
+.colsun-show-for-logged-out { display: var( --colsun--show-for-logged-out ) ! important; }
+
+// Logged in.
+.colsun-hide-for-logged-in { display: var( --colsun--hide-for-logged-in ) ! important; }
+.colsun-show-for-logged-in { display: var( --colsun--show-for-logged-in ) ! important; }
 
 // Member.
 .colsun-hide-for-members { display: var( --colsun--hide-for-members ) ! important; }

@@ -6,14 +6,16 @@ Customizations to Piano for The Colorado Sun.
 == Testing ==
 Use the `testing-blocks.html` file to test class functionality.
 
-The `rid` query param can be used to test functionality,
-* [No rid](https://coloradosun.newspackstaging.com/piano-classes/)
-* [Blank rid](https://coloradosun.newspackstaging.com/piano-classes/?rid=)
-* [FreeTier](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierFree)
-* [TierBasic](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasic)
-* [TierBasicPlus](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierBasicPlus)
-* [TierPremium](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierPremium)
-* [TierChampion](https://coloradosun.newspackstaging.com/piano-classes/?rid=TierChampion)
+Use the `mockPianoLoggedIn` to test logged in state.
+* [Logged Out](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=false)
+* [Logged In](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true)
+
+Use the `mockPianoRid` query parameters to test resource IDs (always logged in as well).
+* [No rid](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true)
+* [TierBasic](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true&rid=TierBasic)
+* [TierBasicPlus](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true&rid=TierBasicPlus)
+* [TierPremium](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true&rid=TierPremium)
+* [TierChampion](https://coloradosun.newspackstaging.com/piano-classes/?mockPianoLoggedIn=true&rid=TierChampion)
 
 == Installation ==
 
